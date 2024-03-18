@@ -1,0 +1,227 @@
+@use "../abstracts/abstracts_all" as *;
+.blog {
+  overflow: visible;
+  padding-bottom: 0;
+  .sticky{
+    position: sticky;
+    top: 100px;
+  }
+
+  @include mediaquery(max, mobile) {
+    .link.more {
+      display: block;
+      width: 150px;
+      margin: 15px auto 0;
+    }
+  }
+}
+.newsletters {
+  background-color: #fff;
+  padding: 35px 0;
+  margin-top: 30px;
+  .section_title {
+    margin: 0;
+  }
+  form {
+    text-align: start;
+    margin: 15px auto;
+    position: relative;
+    .link {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      @include border_radius(5px 0 0 5px);
+    }
+  }
+  @include mediaquery(max, desktop) {
+    .section_title {
+      margin-top: 15px;
+      h3 {
+        font-size: 22px;
+      }
+      p {
+        font-size: 13px;
+      }
+    }
+  }
+
+  @include mediaquery(max, tablet) {
+    .section_title {
+      margin-bottom: 25px;
+    }
+  }
+  @include mediaquery(max, mobile) {
+    .section_title {
+      h3 {
+        font-size: 18px;
+      }
+      p {
+        font-size: 14px;
+      }
+    }
+  }
+}
+.blog_item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  margin: 15px auto;
+  .cover {
+    min-width: 45%;
+    height: 240px;
+    position: relative;
+    img {
+      position: absolute;
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      right: 0;
+      top: 0;
+    }
+  }
+  .cont {
+    padding: 15px;
+    height: 100%;
+    .date {
+      background-color: rgba($main_color, 0.4);
+      line-height: 30px;
+      padding: 0 15px;
+      display: inline-block;
+      color: $black_color;
+      font-size: 13px;
+      border-radius: 25px;
+      margin: 0 0 15px;
+      letter-spacing: 1px;
+      i {
+        margin-inline-end: 3px;
+      }
+    }
+
+    h3 {
+      font-size: 16px;
+      margin: 0 0 15px;
+      color: $black_color;
+      font-weight: 700;
+      line-height: 28px;
+    }
+    p {
+      font-size: 15px;
+      color: rgba($black_color, 0.95);
+    }
+    .text_link {
+      color: $main_color;
+      margin: 0;
+      i {
+        @include transform(rotate(90deg));
+      }
+    }
+  }
+  @include mediaquery(max, mobile) {
+    flex-direction: column;
+    .cover {
+      width: 100%;
+    }
+  }
+}
+.news_slider{
+  .blog_item{
+    flex-direction: column;
+    .cover{
+      min-width: 100%;
+    }
+  }
+}
+.side_block {
+  background-color: #fff;
+  margin: 0 0 25px;
+  @include border_radius(5px);
+  overflow: hidden;
+  .side_txt {
+    font-weight: $weight_xbold;
+    font-size: 16px;
+    line-height: 35px;
+    border-bottom: 1px solid #f5f5f5;
+    line-height: 25px;
+    padding: 15px;
+    i {
+      margin-inline-end: 3px;
+    }
+  }
+  .social{
+    padding: 15px;
+  }
+}
+.listed {
+  border-bottom: 1px solid #f5f5f5;
+  margin: 0;
+  flex-direction: row !important;
+  justify-content: flex-start;
+  .cover {
+    height: 80px;
+    width: 80px !important;
+    min-width: 80px !important;
+  }
+  .cont {
+    h3 {
+      font-size: 14px;
+      line-height: 22px;
+      margin: 0;
+    }
+  }
+}
+.news_details {
+  background-color: #fff;
+  padding: 25px  15px;
+  margin-bottom: 25px;
+  border-radius: 5px;
+  text-align: start;
+  h2 {
+    font-size: 22px;
+    line-height: 30px;
+    color: $main_color;
+    font-weight: 700;
+    margin: 0 0 25px;
+  }
+  .date {
+    background-color: rgba($main_color, 0.4);
+    line-height: 30px;
+    padding: 0 15px;
+    display: inline-block;
+    color: $black_color;
+    font-size: 13px;
+    border-radius: 25px;
+    margin: -10px 0 15px;
+    letter-spacing: 1px;
+    i {
+      margin-inline-end: 3px;
+    }
+  }
+  h3 {
+    font-size: 18px;
+    line-height: 30px;
+    color: $main_color;
+    font-weight: 700;
+    margin-bottom: 15px;
+  }
+  p {
+    color: $black_color;
+    font-size: 16px;
+    line-height: 28px;
+    margin-bottom: 15px;
+  }
+  img {
+    @include border_radius(5px);
+    margin-bottom: 25px;
+    width: 100%;
+  }
+ 
+
+  @include mediaquery(max, mobile) {
+
+    h2 {
+      font-size: 15px;
+    }
+  }
+}

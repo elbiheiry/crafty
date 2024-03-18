@@ -1,0 +1,207 @@
+@use "../abstracts/abstracts_all" as *;
+.tools {
+  .accordion {
+    border: 1px solid #f1f1f1;
+  }
+  @include mediaquery(max, mobile) {
+    .text-right {
+      text-align: center !important;
+    }
+    .link.more {
+      display: block;
+      width: 150px;
+      margin: 15px auto 0;
+    }
+  }
+}
+
+/* Tools Item
+===================*/
+.tool_item {
+  @include border_radius(5px);
+  overflow: hidden;
+  margin: 15px auto;
+  border: 1px solid #f5f5f5;
+  text-align: center;
+  .cover {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    padding: 15px;
+    background-color: #f5f5f5;
+    display: block;
+    img {
+      width: 100%;
+    }
+    .cover_btns {
+      position: absolute;
+      margin: auto;
+      top: 0;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+
+      @include flex(row, center, center);
+      .icon_link {
+        margin: 0 5px;
+        @include transform(scale(0));
+        @include transition(0.3s transform linear);
+        transition-delay: 0.1s;
+        &:last-child {
+          transition-delay: 0s;
+        }
+      }
+    }
+  }
+  .cont {
+    position: relative;
+    background-color: #fff;
+    padding: 15px;
+
+    a {
+      display: block;
+      font-size: 14px;
+      font-weight: $weight_xbold;
+      color: $black_color;
+      margin: 0 0 10px;
+    }
+    p {
+      font-size: 15px;
+      font-weight: $weight_xbold;
+      margin-bottom: 0;
+      line-height: 25px;
+      color: $main_color;
+    }
+    .w-100 {
+      margin: 5px auto;
+
+      .link {
+        line-height: 38px;
+        padding: 0 15px;
+        margin: 0;
+      }
+      .icon_link {
+        vertical-align: middle;
+        margin: 0;
+        &.clicked{
+          background-color: $main_color;
+        }
+      }
+    }
+  }
+  
+}
+
+/* Product
+=====================*/
+.product_slider {
+  margin: 15px auto;
+  background-color: #fff;
+  padding: 15px;
+  @include border_radius(5px);
+  .swiper,
+  .mySwiper .swiper-slide {
+    @include border_radius(3px);
+    cursor: pointer;
+  }
+  .mySwiper {
+    padding: 0;
+    margin-top: 15px;
+  }
+}
+.product_details {
+  margin: 15px auto;
+  background-color: #fff;
+  padding: 25px;
+  color: $black_color;
+  h2 {
+    font-size: 20px;
+    margin: 15px 0;
+    word-spacing: 2px;
+    font-weight: $weight_xbold;
+  }
+  h3 {
+    color: $main_color;
+    font-size: 28px;
+    margin: 0 0 15px;
+   
+  }
+  .link {
+    margin: 0 5px;
+  }
+  .categ_link {
+    margin: 0;
+    font-size: 12px;
+    line-height: 30px;
+  }
+  .icon_link {
+    margin-bottom: 0;
+  }
+  p {
+    font-size: 16px;
+    margin: 0 0 15px;
+    line-height: 30px;
+    font-weight: $weight_bold;
+  }
+  .w-100 {
+    margin: 25px 0 0;
+
+    & > span {
+      font-size: 15px;
+      display: block;
+      position: relative;
+      margin-bottom: 10px;
+      font-weight: $weight_xbold;
+    }
+  }
+  @include mediaquery(max, mobile) {
+    padding: 15px;
+    .icon_link.fa-heart {
+      margin-top: 15px;
+    }
+  }
+}
+.color_list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+  input[type="checkbox"],
+  input[type="radio"] {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    margin: 0 5px 5px;
+    overflow: hidden;
+    vertical-align: middle;
+    position: relative;
+    cursor: pointer;
+    @include border_radius(3px);
+  }
+  input[type="checkbox"]::after,
+  input[type="radio"]::after {
+    content: "";
+    display: block;
+    font-family: "icons_font" !important;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    position: relative;
+    background-color: inherit;
+    text-align: center;
+    line-height: 30px;
+    color: #fff;
+    visibility: visible;
+    @include border_radius(3px);
+  }
+  input[type="checkbox"]:checked,
+  input[type="radio"]:checked {
+    &::after {
+      content: "\e919";
+    }
+  }
+}

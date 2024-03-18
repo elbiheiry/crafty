@@ -1,0 +1,55 @@
+# Template PHP Build
+
+# This template allows you to validate your PHP application.
+# The workflow allows running tests and code linting on the default branch.
+
+image: php:8.0-apache
+
+pipelines:
+  default:
+    - step:
+        name: Build Application
+        script:
+          - apt-get update && apt-get install -y  libpng-dev  zlib1g-dev 
+          - apt-get install -y libwebp-dev libjpeg62-turbo-dev libpng-dev libxpm-dev libfreetype6-dev
+          - docker-php-ext-configure gd  --with-webp --with-jpeg --with-xpm --with-freetype
+          - docker-php-ext-install gd
+          - docker-php-ext-install gettext mysqli pdo pdo_mysql && docker-php-ext-enable pdo_mysql
+          - apt-get install -y libzip-dev zip && docker-php-ext-install zip
+          - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+          - composer install
+          - cp .env.production .env
+          - touch storage/logs/laravel.log
+          - chmod -R 777 .
+          - chmod +x exec.sh
+          - zip -r application.zip --exclude='.git/*' .
+        artifacts:
+          - application.zip
+        services:
+          - docker
+    - step:
+        name: Deploy to Production
+        script:
+          - pipe: atlassian/aws-elasticbeanstalk-deploy:1.0.2
+            variables:
+              AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+              AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+              AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION
+              APPLICATION_NAME: $APPLICATION_NAME
+              ENVIRONMENT_NAME: $ENVIRONMENT_NAME
+              ZIP_FILE: $ZIP_FILE
+              DEBUG: $DEBUG
+              WAIT: 'true'
+        services:
+          - docker
+    - step:
+        name: Migrate Database
+        script:
+          - pipe: atlassian/ssh-run:0.4.0
+            variables:
+              SSH_USER: $SSH_USER
+              SERVER: $AWS_HOST
+              COMMAND: 'cd /var/www/html && sh ./exec.sh'
+              DEBUG: $DEBUG
+        services:
+          - docker

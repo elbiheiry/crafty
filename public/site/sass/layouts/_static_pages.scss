@@ -1,0 +1,224 @@
+@use "../abstracts/abstracts_all" as *;
+.features {
+  position: relative;
+  width: 100%;
+  background: url(../images/bc.jpg) center no-repeat fixed;
+  background-size: cover;
+  background-color: $black_color;
+  color: #fff;
+  overflow: hidden;
+  padding: 100px 0;
+  @include flex(column, center, center);
+  &::before {
+    @include pseudo("", 0, 0);
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    background-color: rgba($black_color, 70%);
+  }
+  .feature {
+    text-align: center;
+    color: #fff;
+    padding: 25px;
+    h3 {
+      font-size: 18px;
+      margin: 15px 0;
+      font-weight: $weight_xbold;
+      line-height: 28px;
+    }
+    p {
+      font-size: 16px;
+    }
+    i {
+      margin: 0;
+      width: 70px;
+      height: 70px;
+      line-height: 70px;
+      background-color: $main_color;
+      @include border_radius(50%);
+      font-size: 24px;
+    }
+    @include mediaquery(max, tablet) {
+      padding: 0;
+      margin-bottom: 25px;
+    }
+  }
+  @include mediaquery(max, mobile) {
+    padding: 25px 0;
+  }
+}
+.static_img {
+  margin: 25px auto;
+}
+.team_item {
+  @include flex(column, center, center);
+  position: relative;
+  cursor: pointer;
+  margin: 15px auto;
+  padding: 35px 25px;
+  background-color: #fff;
+  text-align: center;
+
+  @include transition(0.3s transform linear, 0.3s box-shadow linear);
+  &::after {
+    @include pseudo("", auto, auto);
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 3px;
+    background-color: $main_color;
+    @include transition(0.3s width linear);
+  }
+  &:hover {
+    @include transform(translateY(-10px));
+    @include box_shadow(0, 1px, 30px, 0px, rgba($black_color, 0.01));
+    &::after {
+      width: 100%;
+    }
+  }
+  img {
+    width: 160px;
+    height: 160px;
+    @include border_radius(50%);
+    border: 7px solid #f5f5f5;
+    padding: 5px;
+  }
+  h3 {
+    margin: 15px auto;
+    font-weight: $weight_xbold;
+    font-size: 16px;
+    color: $black_color;
+  }
+  p {
+    margin: 0;
+    font-size: 16px;
+  }
+}
+.text {
+  padding: 25px;
+  background-color: #fff;
+  margin: 25px auto;
+  h3 {
+    color: $main_color;
+    font-weight: $weight_xbold;
+    font-size: 18px;
+    margin: 0 0 15px;
+    line-height: 35px;
+  }
+  p {
+    color: $black_color;
+    display: block;
+    margin: 15px 0;
+    line-height: 25px;
+    font-size: 18px;
+  }
+}
+.companies_slider {
+  background-color: $black_color;
+  margin-bottom: 15px;
+
+  .owl-dots {
+    position: absolute;
+    bottom: 10px;
+    right: 0;
+    left: 0;
+    margin: auto;
+  }
+}
+.partner_item {
+  background-color: #f5f5f5;
+  padding: 15px;
+  margin: 25px auto;
+}
+.video_wrap {
+  position: relative;
+  padding: 0;
+  background-color: $black_color;
+  .row {
+    position: relative;
+    height: 520px;
+  }
+  video {
+    position: absolute;
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+  }
+}
+.feature_item {
+  margin-bottom: 25px;
+  background-color: #f5f5f5;
+  padding: 25px;
+  text-align: center;
+  font-weight: $weight_xbold;
+  font-size: 14px;
+  min-height: 220px;
+  @include flex(column, center, center);
+  @include border_radius(15px);
+  img {
+    width: 96px;
+    margin-bottom: 25px;
+    padding: 15px;
+    background-color: #fff;
+    @include border_radius(15px);
+  }
+  @include mediaquery(max,mobile){
+    padding: 15px;
+    min-height: auto;
+    img{
+      margin-bottom: 15px;
+    }
+  }
+}
+.about_cont {
+  margin: 25px auto;
+  h3 {
+    color: $main_color;
+    font-size: 28px;
+    font-weight: $weight_xbold;
+  }
+  h4 {
+    font-size: 20px;
+    font-weight: $weight_bold;
+  }
+  p {
+    margin: 15px 0;
+    font-size: 16px;
+    line-height: 30px;
+  }
+}
+.about_img {
+  margin-bottom: 15px;
+  img {
+    @include border_radius(5px);
+  }
+}
+
+.terms {
+  text-align: start;
+  h3 {
+    font-size: 24px;
+    font-weight: $weight_bold;
+    margin: 15px 0;
+    color: $main_color;
+  }
+  p {
+    margin-bottom: 15px;
+    line-height: 25px;
+    font-size: 16px;
+    color: #222;
+  }
+}
+@include mediaquery(max,desktop){
+  .faqs{
+    .container .row:last-child{
+      flex-direction: column-reverse;
+    }
+    .faq_img{
+      max-width: 480px;
+    }
+  }
+}

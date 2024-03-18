@@ -1,0 +1,113 @@
+@use "../abstracts/abstracts_all" as *;
+.main_section {
+  position: relative;
+  width: 100%;
+  background: url(../images/bc.jpg) center no-repeat;
+  background-size: cover;
+  background-color: $black_color;
+  color: $white_color;
+  overflow: hidden;
+  margin-top: 80px;
+  padding: 170px 0;
+  @include flex(column, center, center);
+  &::before {
+    @include pseudo("", 0, 0);
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    background-color: rgba($black_color, 80%);
+  }
+  .caption {
+    text-align: center;
+  }
+  h1 {
+    font-size: 42px;
+    font-weight: $weight_xbold;
+    line-height: 50px;
+    margin: 0 auto 30px;
+  }
+  h3 {
+    margin: 25px auto;
+    font-size: 28px;
+    font-weight: $weight_bold;
+    line-height: 40px;
+  }
+
+  .link {
+    margin: 25px 5px 0;
+  }
+  .scroll_btn {
+    position: absolute;
+    bottom: 15px;
+    left: 0;
+    right: 0;
+    width: 25px;
+    height: 50px;
+    margin: auto;
+    background-color: transparent;
+    border: 1px solid $white_color;
+    color: $white_color;
+    @include border_radius(25px);
+    &::before {
+      @include pseudo("", 25px, 0);
+      position: absolute;
+      right: 0;
+      margin: auto;
+      width: 1px;
+      height: 10px;
+      background-color: $white_color;
+      animation: fadeInDownBig infinite 2s;
+    }
+  }
+  @include mediaquery(max, desktop) {
+    padding: 100px 0 140px;
+    h1 {
+      font-size: 32px;
+    }
+    h3 {
+      font-size: 22px;
+    }
+  }
+  @include mediaquery(max, tablet) {
+    padding: 60px 0;
+
+    h1 {
+      line-height: 35px;
+      font-size: 28px;
+      margin-bottom: 15px;
+    }
+    h3 {
+      line-height: 30px;
+      font-size: 18px;
+      margin: 15px auto;
+    }
+    .flex {
+      text-align: center;
+      align-items: center;
+    }
+    .scroll_btn {
+      display: none;
+    }
+    img {
+      max-width: 340px;
+      margin: 25px auto;
+    }
+    .link {
+      margin-inline-end: 0;
+    }
+  }
+  @include mediaquery(max, mobile) {
+    h1 {
+      line-height: 30px;
+      font-size: 18px;
+    }
+    h3 {
+      line-height: 25px;
+      font-size: 15px;
+    }
+    .link {
+      margin: 15px auto;
+    }
+  }
+}
+

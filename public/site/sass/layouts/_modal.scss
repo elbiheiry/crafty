@@ -1,0 +1,66 @@
+@use "../abstracts/abstracts_all" as *;
+.modal {
+  z-index: 9999;
+  padding: 0 !important;
+}
+.modal .modal-dialog {
+  margin: auto;
+  top: 50px;
+  width: 96%;
+  max-width: 520px;
+  background-color: #fff;
+  @include border_radius(5px);
+}
+.modal .modal-content {
+  width: 100%;
+  @include box_no_shadow;
+  border: 0;
+  padding: 0;
+}
+.modal-backdrop.show {
+  opacity: 0.9;
+  z-index: 9998;
+}
+.modal-open {
+  overflow: hidden !important;
+  padding: 0 !important;
+}
+.modal_title {
+  color: $black_color;
+  font-weight: $weight_xbold;
+  font-size: 18px;
+  margin-bottom: 25px;
+}
+.modal-body {
+  padding: 25px;
+}
+.modal-body .icon_link {
+  position: absolute;
+  left: -20px;
+  top: -20px;
+  background-color: $main_color;
+}
+.remove_modal {
+  .icon_link {
+    width: 70px;
+    display: block;
+    height: 70px;
+    position: relative;
+    line-height: 70px;
+    font-size: 28px;
+    left: auto;
+    top: auto;
+    &::after {
+      display: none;
+    }
+  }
+  h3 {
+    font-size: 18px;
+    margin: 25px auto 10px;
+  }
+}
+@media all and (max-width: 767.98px) {
+  .modal-body .icon_link {
+    left: 5px;
+  }
+}

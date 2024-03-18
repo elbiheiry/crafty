@@ -1,0 +1,56 @@
+@use "../abstracts/abstracts_all" as *;
+.loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.load_icon {
+  position: relative;
+  &::after,
+  &::before {
+    position: absolute;
+    content: "";
+    height: 30px;
+    width: 30px;
+    display: block;
+    animation: out 0.5s forwards, spin 1.25s 0.5s infinite ease;
+    border: 5px solid $main_color;
+    @include border_radius(100%);
+    @include box_shadow(0, -40px, 0, -5px, $main_color);
+  }
+  &:after {
+    -webkit-animation-delay: 0s, 1.25s;
+    animation-delay: 0s, 1.25s;
+  }
+}
+
+@-webkit-keyframes out {
+  from {
+    @include box_shadow(0, 0, 0, -5px, $main_color);
+  }
+}
+
+@keyframes out {
+  from {
+    @include box_shadow(0, 0, 0, -5px, $main_color);
+  }
+}
+
+@-webkit-keyframes spin {
+  to {
+    @include transform(rotate(360deg));
+  }
+}
+
+@keyframes spin {
+  to {
+    @include transform(rotate(-360deg));
+  }
+}

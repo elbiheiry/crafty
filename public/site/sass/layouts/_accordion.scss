@@ -1,0 +1,129 @@
+@use "../abstracts/abstracts_all" as *;
+.accordion {
+  .panel {
+    position: relative;
+    margin-bottom: 15px;
+
+    .panel-title {
+      position: relative;
+      line-height: 50px;
+      padding: 0 15px;
+      text-align: start;
+      display: block;
+      font-weight: $weight_xbold;
+      font-size: 14px;
+      color: $main_color;
+      border: 1px solid #f1f1f1;
+
+      &::before {
+        position: absolute;
+        content: "\e90c";
+        font-family: "icons_font" !important;
+        line-height: 50px;
+        font-size: 18px;
+        padding: 0;
+        left: 15px;
+        top: 0;
+        color: $black_color;
+        @include transform(rotate(-180deg));
+        @include transition(0.3s transform linear);
+      }
+      &.collapsed {
+        &::before {
+          @include transform(rotate(0deg));
+        }
+      }
+    }
+    .panel-collapse {
+      background-color: #f5f5f5a6;
+      padding: 0;
+      width: 100%;
+      padding: 15px;
+      &.faqs_panel {
+        background-color: #fff;
+        font-size: 16px;
+        line-height: 30px;
+        border: 1px solid #f1f1f1;
+        border-top: 0;
+        padding: 25px;
+      }
+    }
+  }
+}
+
+.accordion_filter {
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  @include border_radius(5px);
+  margin-bottom: 25px;
+  .panel {
+    min-width: 50%;
+    margin: 0;
+    .panel-title {
+      line-height: 60px;
+      font-weight: $weight_bold;
+      font-size: 16px;
+      border: 0;
+      border-left: 1px solid #f1f1f1;
+      &::before {
+        line-height: 60px;
+      }
+    }
+    .panel-collapse {
+      background-color: #fff;
+      border-top: 1px solid #f8f8f8;
+      position: absolute;
+      top: 60px;
+      z-index: 9999;
+      right: 0;
+      .form-group {
+        margin: 0 0 15px 0;
+      }
+      .link {
+        line-height: 35px;
+        margin: 0;
+        font-size: 12px;
+      }
+    }
+  }
+  @include mediaquery(max, desktop) {
+    .panel {
+      position: unset;
+    }
+  }
+  @include mediaquery(max, tablet) {
+    .panel {
+      .panel-title {
+        padding: 0 10px;
+        font-size: 12px;
+        &::before {
+          left: 10px;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+  @include mediaquery(max, mobile) {
+    flex-direction: column;
+    .panel {
+      position: relative;
+      min-width: 100%;
+      .panel-title {
+        border-top: 1px solid#f8f8f8;
+        border-left: 0;
+        line-height: 40px;
+        padding: 0 25px;
+        &::before {
+          left: 25px;
+          line-height: 40px;
+        }
+      }
+      .panel-collapse {
+        top: 40px;
+      }
+    }
+  }
+}
